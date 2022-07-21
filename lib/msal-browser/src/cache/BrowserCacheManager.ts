@@ -61,6 +61,11 @@ export class BrowserCacheManager extends CacheManager {
                     this.logger.verbose(e);
                     break;
                 }
+            case BrowserCacheLocation.CustomStorage:
+                if (!this.cacheConfig.customStorage) {
+                    throw BrowserAuthError.createCustomStorageNotImplementedError();
+                }
+                return this.cacheConfig.customStorage;
             case BrowserCacheLocation.MemoryStorage:
             default:
                 break;
@@ -961,7 +966,8 @@ export const DEFAULT_BROWSER_CACHE_MANAGER = (clientId: string, logger: Logger):
     const cacheOptions = {
         cacheLocation: BrowserCacheLocation.MemoryStorage,
         storeAuthStateInCookie: false,
-        secureCookies: false
+        secureCookies: false,
+        customStorage: null
     };
     return new BrowserCacheManager(clientId, cacheOptions, DEFAULT_CRYPTO_IMPLEMENTATION, logger);
 };

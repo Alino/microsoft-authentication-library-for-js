@@ -23,10 +23,11 @@ import { EventHandler } from "../../src/event/EventHandler";
 import { EventType } from "../../src/event/EventType";
 import { CacheOptions } from "../../src";
 
-const cacheConfig = {
+const cacheConfig: CacheOptions = {
     cacheLocation: BrowserCacheLocation.SessionStorage,
     storeAuthStateInCookie: false,
-    secureCookies: false
+    secureCookies: false,
+    customStorage: null
 };
 
 const loggerOptions = {

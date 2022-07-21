@@ -8,6 +8,7 @@ import { BrowserUtils } from "../utils/BrowserUtils";
 import { BrowserCacheLocation } from "../utils/BrowserConstants";
 import { INavigationClient } from "../navigation/INavigationClient";
 import { NavigationClient } from "../navigation/NavigationClient";
+import { IWindowStorage } from "../cache/IWindowStorage";
 
 // Default timeout for popup windows and iframes in milliseconds
 export const DEFAULT_POPUP_TIMEOUT_MS = 60000;
@@ -51,6 +52,7 @@ export type CacheOptions = {
     cacheLocation?: BrowserCacheLocation | string;
     storeAuthStateInCookie?: boolean;
     secureCookies?: boolean;
+    customStorage?: IWindowStorage | null;
 };
 
 /**
@@ -129,7 +131,8 @@ export function buildConfiguration({ auth: userInputAuth, cache: userInputCache,
     const DEFAULT_CACHE_OPTIONS: Required<CacheOptions> = {
         cacheLocation: BrowserCacheLocation.SessionStorage,
         storeAuthStateInCookie: false,
-        secureCookies: false
+        secureCookies: false,
+        customStorage: null
     };
 
     // Default logger options for browser

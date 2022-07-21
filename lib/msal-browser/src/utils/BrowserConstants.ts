@@ -44,7 +44,8 @@ export const BrowserConstants = {
 export enum BrowserCacheLocation {
     LocalStorage = "localStorage",
     SessionStorage = "sessionStorage",
-    MemoryStorage = "memoryStorage"
+    MemoryStorage = "memoryStorage",
+    CustomStorage = "customStorage"
 }
 
 /**

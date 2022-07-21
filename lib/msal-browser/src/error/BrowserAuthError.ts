@@ -117,6 +117,10 @@ export const BrowserAuthErrorMessage = {
         code: "invalid_cache_type",
         desc: "Invalid cache type"
     },
+    customStorageNotImplementedError: {
+        code: "custom_storage_not_implemented",
+        desc: "Custom storage was selected but no implementation was passed."
+    },
     notInBrowserEnvironment: {
         code: "non_browser_environment",
         desc: "Login and token requests are not supported in non-browser environments."
@@ -373,6 +377,13 @@ export class BrowserAuthError extends AuthError {
      */
     static createInvalidCacheTypeError(): BrowserAuthError {
         return new BrowserAuthError(BrowserAuthErrorMessage.invalidCacheType.code, `${BrowserAuthErrorMessage.invalidCacheType.desc}`);
+    }
+
+    /**
+     * Creates error thrown when custom storage is selected but no implementation is given in config.
+     */
+    static createCustomStorageNotImplementedError(): BrowserAuthError {
+        return new BrowserAuthError(BrowserAuthErrorMessage.customStorageNotImplementedError.code, BrowserAuthErrorMessage.customStorageNotImplementedError.desc);
     }
 
     /**

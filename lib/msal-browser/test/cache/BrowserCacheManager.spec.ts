@@ -23,7 +23,8 @@ describe("BrowserCacheManager tests", () => {
         cacheConfig = {
             cacheLocation: BrowserCacheLocation.SessionStorage,
             storeAuthStateInCookie: false,
-            secureCookies: false
+            secureCookies: false,
+            customStorage: null
         };
         logger = new Logger({
             loggerCallback: (level: LogLevel, message: string, containsPii: boolean): void => {},
@@ -1058,7 +1059,8 @@ describe("BrowserCacheManager tests", () => {
             cacheConfig = {
                 cacheLocation: BrowserCacheLocation.SessionStorage,
                 storeAuthStateInCookie: false,
-                secureCookies: false
+                secureCookies: false,
+                customStorage: null
             };
             logger = new Logger({
                 loggerCallback: (level: LogLevel, message: string, containsPii: boolean): void => {},
